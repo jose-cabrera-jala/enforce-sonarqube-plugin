@@ -2,17 +2,16 @@
  * Copyright (c) Fundacion Jala. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
-
 package org.fundacionjala.enforce.sonarqube.apex.api;
 
-import com.sonar.sslr.api.Grammar;
 import org.fundacionjala.enforce.sonarqube.apex.api.grammar.buildersource.*;
+import org.fundacionjala.enforce.sonarqube.apex.api.grammar.buildersource.SOQLExpressions;
 import org.sonar.sslr.grammar.LexerfulGrammarBuilder;
+import com.sonar.sslr.api.Grammar;
 
-import static com.sonar.sslr.api.GenericTokenType.EOF;
 import static org.fundacionjala.enforce.sonarqube.apex.api.grammar.ApexGrammarRuleKey.APEX_GRAMMAR;
 import static org.fundacionjala.enforce.sonarqube.apex.api.grammar.ApexGrammarRuleKey.TYPE_DECLARATION;
-import org.fundacionjala.enforce.sonarqube.apex.api.grammar.buildersource.SOQLExpressions;
+import static com.sonar.sslr.api.GenericTokenType.EOF;
 
 /**
  * This class unites all the rules you need a class.
@@ -47,7 +46,9 @@ public class ApexGrammar {
         SOQLExpressions.create(grammarBuilder);
 
         grammarBuilder.rule(APEX_GRAMMAR).is(TYPE_DECLARATION, EOF);
+
         grammarBuilder.setRootRule(APEX_GRAMMAR);
         return grammarBuilder.build();
     }
+
 }
